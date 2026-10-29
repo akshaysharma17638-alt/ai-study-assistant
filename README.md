@@ -4,7 +4,7 @@ A responsive study dashboard that helps students organize notes, plan study task
 
 🔗 **Live Demo:** https://akshaysharma17638-alt.github.io/ai-study-assistant/
 
-![Dashboard](screenshots/dashboard.png)
+![Dashboard](dashboard.png)
 
 ## ✨ Features
 
