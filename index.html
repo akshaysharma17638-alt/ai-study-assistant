@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Study Assistant</title>
+  <!-- Connects the CSS file -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+
+    <!-- ========== SIDEBAR / NAVIGATION ========== -->
+    <aside class="sidebar">
+      <div class="logo">🎓 <span>Study Assistant</span></div>
+      <nav class="nav">
+        <button class="nav-btn active" data-section="dashboard">🏠 <span>Dashboard</span></button>
+        <button class="nav-btn" data-section="chat">💬 <span>AI Chat</span></button>
+        <button class="nav-btn" data-section="notes">📝 <span>My Notes</span></button>
+        <button class="nav-btn" data-section="planner">📅 <span>Planner</span></button>
+      </nav>
+    </aside>
+
+    <!-- ========== MAIN CONTENT ========== -->
+    <main class="main">
+
+      <!-- Header -->
+      <header class="topbar">
+        <div>
+          <h1>AI Study Assistant</h1>
+          <p id="welcomeMessage" class="muted"></p>
+        </div>
+        <div class="date-badge" id="todayDate"></div>
+      </header>
+
+      <!-- ===== DASHBOARD SECTION ===== -->
+      <section id="dashboard" class="section active">
+        <div class="card-grid">
+          <button class="card" data-section="chat">
+            <div class="card-icon">💬</div>
+            <h3>AI Study Chat</h3>
+            <p>Ask study questions (demo mode).</p>
+          </button>
+          <button class="card" data-section="notes">
+            <div class="card-icon">📝</div>
+            <h3>My Notes</h3>
+            <p><strong id="notesCount">0</strong> saved notes</p>
+          </button>
+          <button class="card" data-section="planner">
+            <div class="card-icon">📅</div>
+            <h3>Study Planner</h3>
+            <p><strong id="tasksCount">0</strong> tasks</p>
+          </button>
+        </div>
+
+        <!-- Progress Section -->
+        <div class="panel">
+          <h2>📈 Study Progress</h2>
+          <div class="stats">
+            <div class="stat"><span id="statTotal">0</span><small>Total Tasks</small></div>
+            <div class="stat"><span id="statDone">0</span><small>Completed</small></div>
+            <div class="stat"><span id="statPending">0</span><small>Pending</small></div>
+          </div>
+          <div class="progress-label">
+            <span>Overall progress</span>
+            <strong id="progressPercent">0%</strong>
+          </div>
+          <div class="progress-track">
+            <div class="progress-bar" id="progressBar"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== AI CHAT SECTION ===== -->
+      <section id="chat" class="section">
+        <div class="panel">
+          <div class="panel-head">
+            <h2>💬 AI Study Chat</h2>
+            <button id="clearChatBtn" class="btn btn-outline">Clear Chat</button>
+          </div>
+          <p class="notice">⚠️ Demo mode: replies are pre-written samples, not a real AI.</p>
+          <div id="chatBox" class="chat-box"></div>
+          <form id="chatForm" class="row">
+            <input type="text" id="chatInput" placeholder="Type your question..." autocomplete="off" />
+            <button type="submit" class="btn">Send</button>
+          </form>
+        </div>
+      </section>
+
+      <!-- ===== NOTES SECTION ===== -->
+      <section id="notes" class="section">
+        <div class="panel">
+          <h2>📝 My Notes</h2>
+          <form id="noteForm" class="stack">
+            <input type="text" id="noteTitle" placeholder="Note title" />
+            <textarea id="noteBody" rows="4" placeholder="Write your note here..."></textarea>
+            <p id="noteError" class="error"></p>
+            <button type="submit" class="btn">Add Note</button>
+          </form>
+        </div>
+        <div id="notesList" class="card-grid"></div>
+      </section>
+
+      <!-- ===== PLANNER SECTION ===== -->
+      <section id="planner" class="section">
+        <div class="panel">
+          <h2>📅 Study Planner</h2>
+          <form id="taskForm" class="row">
+            <input type="text" id="taskInput" placeholder="e.g. Revise Chapter 3 Maths" />
+            <button type="submit" class="btn">Add Task</button>
+          </form>
+          <p id="taskError" class="error"></p>
+          <p class="muted">
+            Total: <strong id="plannerTotal">0</strong> &nbsp;|&nbsp;
+            Completed: <strong id="plannerDone">0</strong>
+          </p>
+          <ul id="taskList" class="task-list"></ul>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Connects the JavaScript file (at the end so the HTML loads first) -->
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,210 @@
+/* ===== Theme colors (easy to change in one place) ===== */
+:root {
+  --blue: #2563eb;
+  --blue-dark: #1d4ed8;
+  --blue-light: #eff6ff;
+  --text: #1e293b;
+  --muted: #64748b;
+  --border: #e2e8f0;
+  --white: #ffffff;
+  --danger: #dc2626;
+  --success: #16a34a;
+  --shadow: 0 4px 14px rgba(37, 99, 235, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: var(--blue-light);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+/* ===== Layout ===== */
+.app { display: flex; min-height: 100vh; }
+
+.sidebar {
+  width: 230px;
+  background: var(--white);
+  border-right: 1px solid var(--border);
+  padding: 24px 16px;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+.logo { font-size: 1.2rem; font-weight: 700; color: var(--blue); margin-bottom: 28px; }
+.nav { display: flex; flex-direction: column; gap: 8px; }
+
+.nav-btn {
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 12px 14px;
+  border-radius: 10px;
+  font-size: 1rem;
+  color: var(--text);
+  cursor: pointer;
+  transition: 0.2s;
+}
+.nav-btn:hover { background: var(--blue-light); }
+.nav-btn.active { background: var(--blue); color: var(--white); }
+
+.main { flex: 1; padding: 28px; max-width: 1100px; }
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.topbar h1 { color: var(--blue-dark); font-size: 1.8rem; }
+.muted { color: var(--muted); }
+.date-badge {
+  background: var(--white);
+  padding: 10px 16px;
+  border-radius: 999px;
+  box-shadow: var(--shadow);
+  font-weight: 600;
+  color: var(--blue);
+}
+
+/* ===== Sections (only the active one is shown) ===== */
+.section { display: none; }
+.section.active { display: block; }
+
+/* ===== Cards & panels ===== */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+  margin-bottom: 20px;
+}
+.card {
+  background: var(--white);
+  border: none;
+  border-radius: 16px;
+  padding: 22px;
+  box-shadow: var(--shadow);
+  text-align: left;
+  font-family: inherit;
+  color: var(--text);
+  cursor: pointer;
+  transition: 0.2s;
+}
+.card:hover { transform: translateY(-4px); box-shadow: 0 8px 22px rgba(37, 99, 235, 0.18); }
+.card-icon { font-size: 2rem; margin-bottom: 8px; }
+.card h3 { margin-bottom: 4px; }
+
+.panel {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: var(--shadow);
+  margin-bottom: 20px;
+}
+.panel h2 { margin-bottom: 14px; color: var(--blue-dark); }
+.panel-head { display: flex; justify-content: space-between; align-items: center; }
+
+/* ===== Forms & buttons ===== */
+input, textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-size: 1rem;
+  font-family: inherit;
+}
+input:focus, textarea:focus { outline: 2px solid var(--blue); border-color: transparent; }
+
+.row { display: flex; gap: 10px; }
+.stack { display: flex; flex-direction: column; gap: 10px; }
+
+.btn {
+  background: var(--blue);
+  color: var(--white);
+  border: none;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.2s;
+  white-space: nowrap;
+}
+.btn:hover { background: var(--blue-dark); }
+.btn-outline { background: var(--white); color: var(--blue); border: 1px solid var(--blue); padding: 8px 14px; }
+.btn-outline:hover { background: var(--blue-light); }
+.btn-danger { background: var(--danger); padding: 8px 12px; }
+.btn-danger:hover { background: #b91c1c; }
+
+.error { color: var(--danger); font-size: 0.9rem; min-height: 1.2em; }
+.notice { background: #fef9c3; padding: 8px 12px; border-radius: 8px; margin-bottom: 12px; font-size: 0.9rem; }
+
+/* ===== Progress ===== */
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 18px; }
+.stat { background: var(--blue-light); border-radius: 12px; padding: 14px; text-align: center; }
+.stat span { display: block; font-size: 1.8rem; font-weight: 700; color: var(--blue); }
+.stat small { color: var(--muted); }
+.progress-label { display: flex; justify-content: space-between; margin-bottom: 6px; }
+.progress-track { background: var(--border); border-radius: 999px; height: 14px; overflow: hidden; }
+.progress-bar { height: 100%; width: 0%; background: var(--blue); border-radius: 999px; transition: width 0.4s; }
+
+/* ===== Chat ===== */
+.chat-box {
+  height: 340px;
+  overflow-y: auto;
+  background: var(--blue-light);
+  border-radius: 12px;
+  padding: 14px;
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.msg { max-width: 80%; padding: 10px 14px; border-radius: 14px; word-wrap: break-word; }
+.msg.user { align-self: flex-end; background: var(--blue); color: var(--white); }
+.msg.bot { align-self: flex-start; background: var(--white); border: 1px solid var(--border); }
+.msg small { display: block; color: var(--muted); font-size: 0.75rem; margin-bottom: 2px; }
+
+/* ===== Notes ===== */
+.note { background: var(--white); border-radius: 16px; padding: 18px; box-shadow: var(--shadow); }
+.note h3 { color: var(--blue-dark); margin-bottom: 6px; }
+.note p { white-space: pre-wrap; margin-bottom: 12px; }
+.empty { color: var(--muted); padding: 10px; }
+
+/* ===== Tasks ===== */
+.task-list { list-style: none; margin-top: 14px; }
+.task {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  margin-bottom: 8px;
+  transition: 0.2s;
+}
+.task:hover { background: var(--blue-light); }
+.task input[type="checkbox"] { width: 20px; height: 20px; cursor: pointer; }
+.task span { flex: 1; }
+.task.done span { text-decoration: line-through; color: var(--muted); }
+
+/* ===== Tablet ===== */
+@media (max-width: 900px) {
+  .main { padding: 20px; }
+}
+
+/* ===== Mobile: sidebar becomes a top bar ===== */
+@media (max-width: 700px) {
+  .app { flex-direction: column; }
+  .sidebar { width: 100%; height: auto; position: static; padding: 12px; border-right: none; border-bottom: 1px solid var(--border); }
+  .logo { margin-bottom: 10px; }
+  .nav { flex-direction: row; overflow-x: auto; }
+  .nav-btn { padding: 10px 12px; white-space: nowrap; }
+  .topbar h1 { font-size: 1.4rem; }
+  .stats { grid-template-columns: 1fr; }
+  .row { flex-direction: column; }
+  .msg { max-width: 92%; }
+}
